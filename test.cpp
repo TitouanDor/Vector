@@ -38,5 +38,7 @@ int main(){
     printVect(v5, true);
     v5 = v4 - v4;
     printVect(v5, true);
+    v5 = v2;
+    printVect(v5, true);
     printf("\n");
 }

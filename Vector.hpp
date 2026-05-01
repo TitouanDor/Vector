@@ -2,9 +2,10 @@
 #define VECTOR_HPP
 #include <stdexcept>
 
-
-
-
+/**
+ * @author TitouanDor
+ * Vector Class
+ */
 class Vector{
     public:
         /**
@@ -184,6 +185,27 @@ class Vector{
                 throw std::out_of_range("Index out of range.");
             }
             return this->values[index];
+        }
+
+        /**
+         * Overloaded assignment operator that copies the values and dimension from another vector.
+         * It checks for self-assignment, allocates new memory for the copied values, copies each value
+         * from the source vector, releases the current memory, and then updates the dimension and pointer.
+         * @param other The vector to assign from
+         * @return A reference to the current vector after assignment
+         */
+        Vector& operator=(const Vector& other) {
+            if (this == &other) return *this;
+
+            double* newValues = new double[other.dim];
+            for (short i = 0; i < other.dim; ++i) {
+                newValues[i] = other.values[i];
+            }
+
+            delete[] values;
+            values = newValues;
+            dim = other.dim;
+            return *this;
         }
 
     private:
