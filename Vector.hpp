@@ -1,6 +1,7 @@
 #ifndef VECTOR_HPP
 #define VECTOR_HPP
 #include <stdexcept>
+#include <string.h>
 
 /**
  * @author TitouanDor
@@ -206,6 +207,22 @@ class Vector{
             values = newValues;
             dim = other.dim;
             return *this;
+        }
+
+        /**
+         * Formats the vector contents as "Vector(x1, x2, ..., xn)" where xi are the vector components separated by commas.
+         * @return std::string of the vector
+         */
+        std::string toString() {
+            std::string result = "Vector(";
+            for(int i = 0; i < this->dim; i++) {
+                result += std::to_string(this->get(i));
+                if(i < this->dim - 1){
+                    result += ", ";
+                }
+            }
+            result += ")";
+            return result;
         }
 
     private:
